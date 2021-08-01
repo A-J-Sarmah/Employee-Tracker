@@ -8,7 +8,7 @@ function Input() {
           Enter a new Task
         </p>
         <div className="col-xl-4 col-12 mb-5">
-          <label>Number of Employees reuired</label>
+          <label>Number of Employees required</label>
           <input
             type="text"
             className="w-100"
