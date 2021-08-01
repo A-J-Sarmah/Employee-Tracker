@@ -44,7 +44,9 @@ const task = (state = [], action) => {
 const totalEmployee = (state = "20000", action) => {
   switch (action.type) {
     case "CHANGE_TOTAL_EMPLOYEE":
-      return action.value;
+      if (!isNaN(parseInt(action.value))) {
+        return action.value;
+      }
     default:
       return state;
   }

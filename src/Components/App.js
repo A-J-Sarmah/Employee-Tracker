@@ -1,6 +1,6 @@
 import Navbar from "./Navbar";
 import Headers from "./Headers";
-import Card from "./Card";
+import Cards from "./Card";
 import TotalEmployeeToggler from "./TotalEmployeeToggler";
 import Input from "./Input";
 import Button from "./Button";
@@ -11,7 +11,7 @@ function App() {
       <Navbar />
       <Headers />
       <div className="container">
-        <Card />
+        <Cards />
         <TotalEmployeeToggler />
         <Input />
         <Button />

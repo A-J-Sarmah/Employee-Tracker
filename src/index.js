@@ -7,6 +7,10 @@ import { employeeTracker } from "./reducers";
 
 const store = createStore(employeeTracker);
 
+store.subscribe(() => {
+  console.log(store.getState());
+});
+
 ReactDOM.render(
   <Provider store={store}>
     <App />
