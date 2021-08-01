@@ -3,7 +3,6 @@ import Headers from "./Headers";
 import Cards from "./Card";
 import TotalEmployeeToggler from "./TotalEmployeeToggler";
 import Input from "./Input";
-import Button from "./Button";
 
 function App() {
   return (
@@ -14,7 +13,6 @@ function App() {
         <Cards />
         <TotalEmployeeToggler />
         <Input />
-        <Button />
       </div>
     </>
   );
