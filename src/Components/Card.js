@@ -6,7 +6,10 @@ function Card({ state }) {
     const totalEmployee = state.totalEmployee;
     let sumOfEmployeeUsedInTask = 0;
     for (let i = 0; i < state.task.length; i++) {
-      sumOfEmployeeUsedInTask += state.task[i].employee;
+      if (!state.task[i].isCompleated) {
+        sumOfEmployeeUsedInTask =
+          parseInt(sumOfEmployeeUsedInTask) + parseInt(state.task[i].employee);
+      }
     }
     return totalEmployee - sumOfEmployeeUsedInTask;
   };

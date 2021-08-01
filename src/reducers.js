@@ -1,23 +1,11 @@
 import { combineReducers } from "redux";
 
-function removeTask(state, id) {
+function getIndex(state, id) {
   for (let i = 0; i < state.length; i++) {
-    if (id === state.id) {
-      state.splice(i, 1);
-      break;
+    if (id === state[i].id) {
+      return i;
     }
   }
-  return state;
-}
-
-function toggleStatus(state, id) {
-  for (let i = 0; i < state.length; i++) {
-    if (id === state.id) {
-      state[i].isCompleated = !state[i].isCompleated;
-      break;
-    }
-  }
-  return state;
 }
 
 const task = (state = [], action) => {
@@ -33,9 +21,13 @@ const task = (state = [], action) => {
         },
       ];
     case "REMOVE_TASK":
-      return removeTask(state, action.id);
+      const indexRemove = getIndex(state, action.id);
+      state.splice(indexRemove, 1);
+      return [...state];
     case "TOGGLE_STATUS":
-      return toggleStatus(state, action.id);
+      const index = getIndex(state, action.id);
+      state[index].isCompleated = !state[index].isCompleated;
+      return [...state];
     default:
       return state;
   }
