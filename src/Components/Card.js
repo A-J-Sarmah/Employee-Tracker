@@ -2,6 +2,14 @@ import React from "react";
 import { connect } from "react-redux";
 
 function Card({ state }) {
+  const calculateAvailabeEmployees = (state) => {
+    const totalEmployee = state.totalEmployee;
+    let sumOfEmployeeUsedInTask = 0;
+    for (let i = 0; i < state.task.length; i++) {
+      sumOfEmployeeUsedInTask += state.task[i].employee;
+    }
+    return totalEmployee - sumOfEmployeeUsedInTask;
+  };
   return (
     <div className="row justify-content-center mt-5">
       <div className="col-12 col-xl-6">
@@ -12,7 +20,9 @@ function Card({ state }) {
             <p className="card-text mt-3">
               Total Employees = {state.totalEmployee}
             </p>
-            <p className="card-text">Avalilabe Employee = 20000</p>
+            <p className="card-text">
+              Avalilabe Employee = {calculateAvailabeEmployees(state)}
+            </p>
             <p className="card-text">Total Task = 0</p>
             <p className="card-text">Task Compleated = 0</p>
             <p className="card-text">Task Not Compleated = 0</p>
