@@ -10,16 +10,16 @@ let List = ({ state }) => {
             id={element.id}
             key={element.id}
             className="
-            col-12
-            shadow
-            d-flex
-            align-items-center
-            justify-content-end
-            mb-2
-          "
+              col-12
+              shadow
+              d-flex
+              align-items-center
+              justify-content-end
+              mb-2
+            "
           >
             <span className="me-auto">
-              {element.employee} ({element.time})
+              {element.employee} employee ({element.time} hours)
             </span>
             <span>
               <i className="fa fa-check me-2"></i>
