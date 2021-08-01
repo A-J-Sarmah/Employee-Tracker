@@ -1,9 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./Components/App";
-// import { createStore } from "redux";
-// import { Provider } from "react-redux";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import { employeeTracker } from "./reducers";
 
-// const store = createStore();
+const store = createStore(employeeTracker);
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
