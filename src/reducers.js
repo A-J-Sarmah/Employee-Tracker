@@ -44,4 +44,26 @@ const totalEmployee = (state = "20000", action) => {
   }
 };
 
-export const employeeTracker = combineReducers({ task, totalEmployee });
+const alert = (state = [], action) => {
+  switch (action.type) {
+    case "DANGER_ALERT":
+      return [
+        ...state,
+        {
+          message:
+            "Some error occured number of available employee less than zero or entered wrong value",
+          isCompleated: false,
+          id: action.id,
+        },
+      ];
+    case "COMPLEATED":
+      const index = getIndex(state, action.id);
+      if (state[index]) {
+        state.splice(index, 1);
+      }
+      return [state];
+    default:
+      return state;
+  }
+};
+export const employeeTracker = combineReducers({ task, totalEmployee, alert });

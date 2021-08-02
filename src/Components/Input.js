@@ -10,13 +10,20 @@ function Inputs({ state, dispatch }) {
     if (
       !isNaN(parseInt(numberOfRequiredEmployee.value)) &&
       !isNaN(parseInt(estimatedTime.value)) &&
-      calculateAvailabeEmployees(state) > 0
+      calculateAvailabeEmployees(state) -
+        parseInt(numberOfRequiredEmployee.value) >
+        0
     ) {
       dispatch({
         type: "ADD_TASK",
         id: v4(),
         employee: numberOfRequiredEmployee.value,
         time: estimatedTime.value,
+      });
+    } else {
+      dispatch({
+        type: "DANGER_ALERT",
+        id: v4(),
       });
     }
     numberOfRequiredEmployee.value = "";
