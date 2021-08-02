@@ -1,14 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
 import { v4 } from "uuid";
+import calculateAvailabeEmployees from "../calculateAvailableEmployee";
 
-function Inputs({ dispatch }) {
+function Inputs({ state, dispatch }) {
   let numberOfRequiredEmployee;
   let estimatedTime;
   const addTask = () => {
     if (
       !isNaN(parseInt(numberOfRequiredEmployee.value)) &&
-      !isNaN(parseInt(estimatedTime.value))
+      !isNaN(parseInt(estimatedTime.value)) &&
+      calculateAvailabeEmployees(state) > 0
     ) {
       dispatch({
         type: "ADD_TASK",
@@ -58,6 +60,9 @@ function Inputs({ dispatch }) {
   );
 }
 
-const Input = connect()(Inputs);
+const mapStateToProps = (state) => {
+  return { state };
+};
+const Input = connect(mapStateToProps)(Inputs);
 
 export default Input;

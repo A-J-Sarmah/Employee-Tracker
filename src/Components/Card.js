@@ -1,17 +1,29 @@
 import React from "react";
 import { connect } from "react-redux";
+import calculateAvailabeEmployees from "../calculateAvailableEmployee";
 
 function Card({ state }) {
-  const calculateAvailabeEmployees = (state) => {
-    const totalEmployee = state.totalEmployee;
-    let sumOfEmployeeUsedInTask = 0;
-    for (let i = 0; i < state.task.length; i++) {
-      if (!state.task[i].isCompleated) {
-        sumOfEmployeeUsedInTask =
-          parseInt(sumOfEmployeeUsedInTask) + parseInt(state.task[i].employee);
+  const calculateTotalTask = (state) => {
+    const task = state.task;
+    return task.length;
+  };
+  const calculateCompleatedTask = (state) => {
+    const task = [];
+    for (let i = 0; i < state.length; i++) {
+      if (state[i].isCompleated) {
+        task.push(state[i]);
       }
     }
-    return totalEmployee - sumOfEmployeeUsedInTask;
+    return task.length;
+  };
+  const calculateNonCompleatedTask = (state) => {
+    const task = [];
+    for (let i = 0; i < state.length; i++) {
+      if (!state[i].isCompleated) {
+        task.push(state[i]);
+      }
+    }
+    return task.length;
   };
   return (
     <div className="row justify-content-center mt-5">
@@ -26,9 +38,15 @@ function Card({ state }) {
             <p className="card-text">
               Avalilabe Employee = {calculateAvailabeEmployees(state)}
             </p>
-            <p className="card-text">Total Task = 0</p>
-            <p className="card-text">Task Compleated = 0</p>
-            <p className="card-text">Task Not Compleated = 0</p>
+            <p className="card-text">
+              Total Task = {calculateTotalTask(state)}
+            </p>
+            <p className="card-text">
+              Task Compleated = {calculateCompleatedTask(state.task)}
+            </p>
+            <p className="card-text">
+              Task Not Compleated = {calculateNonCompleatedTask(state.task)}
+            </p>
           </div>
         </div>
       </div>
