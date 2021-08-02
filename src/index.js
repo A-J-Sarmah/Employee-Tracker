@@ -16,7 +16,6 @@ function setInitialState() {
 const store = createStore(employeeTracker, setInitialState());
 
 store.subscribe(() => {
-  console.log(store.getState());
   const state = store.getState();
   localStorage.clear();
   localStorage.setItem("state", JSON.stringify(state));

@@ -51,18 +51,12 @@ const alert = (state = [], action) => {
       return [
         ...state,
         {
-          message:
-            "Some error occured number of available employee less than zero or entered wrong value",
           isCompleated: false,
           id: action.id,
         },
       ];
     case "COMPLEATED":
-      const index = getIndex(state, action.id);
-      if (state[index]) {
-        state.splice(index, 1);
-      }
-      return [state];
+      return [];
     default:
       return state;
   }

@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 
 let Navbar = ({ state, dispatch }) => {
-  const killAlert = (id) => {
-    dispatch({ type: "COMPLEATED", id: id });
+  const killAlert = () => {
+    dispatch({ type: "COMPLEATED" });
   };
   return (
     <>
@@ -14,18 +14,18 @@ let Navbar = ({ state, dispatch }) => {
       </nav>
       {state.alert.map((element) => {
         if (element.isCompleated === false) {
+          setTimeout(killAlert, 3000);
           return (
             <div
-              class="alert alert-danger"
+              className="alert alert-danger"
               role="alert"
+              key={element.id}
               onClick={() => {
                 killAlert(element.id);
               }}
             >
-              {element.message}
-              {setTimeout(() => {
-                killAlert(element.id);
-              }, 3000)}
+              Some error occured number of available employee less than zero or
+              entered wrong value.
             </div>
           );
         }

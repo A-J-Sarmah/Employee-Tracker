@@ -11,8 +11,9 @@ function Inputs({ state, dispatch }) {
     if (
       !isNaN(parseInt(numberOfRequiredEmployee.value)) &&
       !isNaN(parseInt(estimatedTime.value)) &&
+      typeof taskName.value === "string" &&
       calculateAvailabeEmployees(state) -
-        parseInt(numberOfRequiredEmployee.value) >
+        parseInt(numberOfRequiredEmployee.value) >=
         0
     ) {
       dispatch({
