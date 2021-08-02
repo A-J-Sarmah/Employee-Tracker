@@ -6,6 +6,7 @@ import calculateAvailabeEmployees from "../calculateAvailableEmployee";
 function Inputs({ state, dispatch }) {
   let numberOfRequiredEmployee;
   let estimatedTime;
+  let taskName;
   const addTask = () => {
     if (
       !isNaN(parseInt(numberOfRequiredEmployee.value)) &&
@@ -17,6 +18,7 @@ function Inputs({ state, dispatch }) {
       dispatch({
         type: "ADD_TASK",
         id: v4(),
+        task: taskName.value,
         employee: numberOfRequiredEmployee.value,
         time: estimatedTime.value,
       });
@@ -28,6 +30,7 @@ function Inputs({ state, dispatch }) {
     }
     numberOfRequiredEmployee.value = "";
     estimatedTime.value = "";
+    taskName.value = "";
   };
   return (
     <>
@@ -35,6 +38,16 @@ function Inputs({ state, dispatch }) {
         <p className="display-3 text-muted text-center my-5">
           Enter a new Task
         </p>
+        <div className="col-xl-4 col-12 mb-5">
+          <label>Name of task</label>
+          <input
+            type="text"
+            className="w-100"
+            id="amount"
+            ref={(node) => (taskName = node)}
+            placeholder="Name of task"
+          />
+        </div>
         <div className="col-xl-4 col-12 mb-5">
           <label>Number of Employees required</label>
           <input
@@ -46,7 +59,7 @@ function Inputs({ state, dispatch }) {
           />
         </div>
         <div className="col-xl-4 col-12 mb-5">
-          <label>Estimated time</label>
+          <label>Estimated time(in hours)</label>
           <input
             type="text"
             className="w-100"

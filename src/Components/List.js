@@ -26,7 +26,8 @@ let List = ({ state, dispatch }) => {
             `}
           >
             <span className="me-auto">
-              {element.employee} employee ({element.time} hours)
+              {element.employee} employee working on {element.task} for{" "}
+              {element.time} hours.
             </span>
             <span>
               <i

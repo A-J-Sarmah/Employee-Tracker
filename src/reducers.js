@@ -15,6 +15,7 @@ const task = (state = [], action) => {
         ...state,
         {
           id: action.id,
+          task: action.task,
           employee: action.employee,
           time: action.time,
           isCompleated: false,
